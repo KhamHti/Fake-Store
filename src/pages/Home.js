@@ -3,21 +3,33 @@ import { ProductContext } from "../contexts/ProductContext";
 
 const Home = () => {
   const { products } = useContext(ProductContext);
-  console.log(products);
+  // console.log(products);
+  const filteredProducts = products.filter((item) => {
+    return (
+      item.category === "men's clothing" || item.category === "women's clothing"
+    );
+  });
+
+  console.log(filteredProducts);
+
   return (
     <div className="">
-      <h1>Welcome to Our Homepage</h1>
-      {products.length > 0 ? (
-        <div className="flex justify-center m-10">
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>{product.title}</li>
-            ))}
-        </ul>
-            </div>
-      ) : (
-        <p>Products are loading...</p>
-      )}
+      <section className="py-8">
+        <div className="container ms-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+            {filteredProducts.map((product) => {
+              return (
+                <div
+                  key={product.id}
+                  className="mb-4 w-full bg-pink-200 h-[300px] mx-5"
+                >
+                  {product.title}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
