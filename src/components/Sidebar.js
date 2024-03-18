@@ -22,7 +22,7 @@ const Sidebar = () => {
       <div className="flex justify-between items-center py-6 border-b">
         <div className="font-semibold text-sm uppercase">Shopping Bag (0)</div>
         <div
-          onwClick={handleClose}
+          onwClick={() => console.log("pressed")}
           className="w-8 h-8 cursor-pointer 
           flex justify-center items-center"
         >
@@ -31,9 +31,7 @@ const Sidebar = () => {
       </div>
       <div>
         {cart.map((item) => {
-          return (
-            <CartItem item={item} key={item.id} />
-          );
+          return <CartItem item={item} key={item.id} />;
         })}
       </div>
     </div>
