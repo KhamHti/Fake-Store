@@ -8,7 +8,8 @@ const CartItem = ({ item }) => {
     item;
   // console.log(item, "item");
 
-  const { addToCart, removeFromCart } = useContext(CartContext);
+  const { addToCart, removeFromCart, increaseAmount, decreaseAmount } =
+    useContext(CartContext);
 
   return (
     <div
@@ -49,7 +50,7 @@ const CartItem = ({ item }) => {
               h-full border text-primary font-medium"
             >
               <div
-                // onClick={}
+                onClick={() => decreaseAmount(id)}
                 className="flex-1 h-full flex justify-center 
                 items-center cursor-pointer"
               >
@@ -62,6 +63,7 @@ const CartItem = ({ item }) => {
                 {amount}
               </div>
               <div
+                onClick={() => increaseAmount(id)}
                 className="flex-1 h-full flex justify-center 
                 items-center cursor-pointer"
               >
