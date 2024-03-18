@@ -4,12 +4,12 @@ import { IoMdArrowForward } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 import CartItem from "../components/CartItem";
 import { SidebarContext } from "../contexts/SidebarContext";
+import { CartContext } from "../contexts/CartContext";
 
 const Sidebar = () => {
   const { isOpen, setIsOpen, handleClose } = useContext(SidebarContext);
-  // console.log("setIsOpen", setIsOpen);
-  // console.log("isOpen", isOpen);
-  // console.log("handle", handle);
+  const { cart } = useContext(CartContext);
+
   return (
     <div
       className={`${
@@ -22,12 +22,19 @@ const Sidebar = () => {
       <div className="flex justify-between items-center py-6 border-b">
         <div className="font-semibold text-sm uppercase">Shopping Bag (0)</div>
         <div
-        onClick={handleClose}
+          onwClick={handleClose}
           className="w-8 h-8 cursor-pointer 
           flex justify-center items-center"
         >
           <IoMdArrowForward className="text-2xl" />
         </div>
+      </div>
+      <div>
+        {cart.map((item) => {
+          return (
+            <CartItem item={item} key={item.id} />
+          );
+        })}
       </div>
     </div>
   );
