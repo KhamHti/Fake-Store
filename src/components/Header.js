@@ -30,7 +30,7 @@ const Header = () => {
         className="flex container h-full items-center
        justify-between mx-auto"
       >
-        <Link to={"/"}>
+        <Link to={"/"} className="ml-5">
           <div>
             <img src={Me} alt="" className="w-[40px]"></img>
           </div>
@@ -38,7 +38,7 @@ const Header = () => {
         {/* cart */}
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="cursor-pointer flex relative"
+          className="cursor-pointer flex relative mr-5"
         >
           <BsBag className="text-2xl" />
           <div
