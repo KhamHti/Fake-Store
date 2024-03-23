@@ -8,8 +8,8 @@ import { CartContext } from "../contexts/CartContext";
 
 const Sidebar = () => {
   const { isOpen, setIsOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, total } = useContext(CartContext);
-  console.log(total);
+  const { cart, clearCart, total, itemAmount } = useContext(CartContext);
+  // console.log(total);
 
   return (
     <>
@@ -23,7 +23,7 @@ const Sidebar = () => {
       >
         <div className="flex justify-between items-center py-6 border-b">
           <div className="font-semibold text-sm uppercase">
-            Shopping Bag (0)
+            Shopping Bag ({itemAmount})
           </div>
           <div
             onClick={handleClose}
